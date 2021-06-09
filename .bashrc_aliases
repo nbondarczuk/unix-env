@@ -1,0 +1,56 @@
+#
+# 1letters
+#
+alias h=history
+alias f=find
+alias v=vim
+alias e=emacs
+alias w=who
+alias p='ps -Af | grep $1'
+
+alias hh='history | grep $1'
+alias da='date "+%A, %B %d, %Y [%T]"'
+alias du1='du --max-depth=1'
+alias openports='netstat --all --numeric --programs --inet --inet6'
+
+#
+# ls aliases
+#
+alias l='ls -CF'
+alias lr='ls -R'
+alias la='ls -A'
+alias lm='la | less'
+alias ll='ls -al'
+alias lx='ll -BX'        # sort by extension
+alias lz='ll -rS'        # sort by size
+alias lt='ll -rt'        # sort by date
+
+
+#
+# window size
+# 
+alias small="printf '\e[8;24;80t'"
+alias medium="printf '\e[8;44;120t'"
+alias large="printf '\e[8;54;120t'"
+alias zoom="printf '\e[9;1t'"
+alias front="printf '\e[5t'"
+alias topleft="printf '\e[3;0;0t'"
+
+#
+#
+#
+alias xmll='xmllint -format -recover'
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'

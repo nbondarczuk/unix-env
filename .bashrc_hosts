@@ -1,0 +1,2 @@
+alias zen='ssh -l nb zen -X'
+alias qnap='ssh -l nb qnap -X'

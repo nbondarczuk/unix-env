@@ -1,0 +1,56 @@
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+export PS1="\u@\h \[\033[32m\]\w\[\033[33m\]\$(parse_git_branch)\[\033[00m\] $ "
+
+function gas() { git status ;  git add . -A ; git commit -m "$1" ; git push; }
+alias lg='git log --graph --oneline --decorate --all'
+alias la='alias'
+
+#
+# git macros
+#
+
+alias g='git'
+alias ga='git add'
+alias gaa='git add .'
+alias gaaa='git add --all'
+alias gau='git add --update'
+alias gb='git branch -avv'
+alias gbd='git branch --delete '
+alias gbs='git status;git add . -A;git commit -m"Update";git push'
+alias gc='git commit'
+alias gca='git commit --amend'
+alias gcm='git commit --message'
+alias gcf='git commit --fixup'
+alias gco='git checkout'
+alias gcob='git checkout -b'
+alias gcom='git checkout master'
+alias gcos='git checkout staging'
+alias gcod='git checkout develop'
+alias gd='git diff'
+alias gda='git diff HEAD'
+alias gf='git fetch;git diff master..origin/master'
+alias gi='git init'
+alias gih='gitdir=$(git rev-parse --git-dir); scp -p -P 29418 nbondarczuk@gerrit.inteligo.com.pl:hooks/commit-msg ${gitdir}/hooks/'
+alias gl='clear;git status;git log --pretty=format:"%h %s %ad" --graph --since=1.days --date=relative;git log --show-signature -n 1'
+alias glg='git log --graph --oneline --decorate --all'
+alias gld='git log --pretty=format:"%h %ad %s" --date=short --all'
+alias glp='git log --pretty=oneline'
+alias gm='git merge --no-ff'
+alias gma='git merge --abort'
+alias gmc='git merge --continue'
+alias gmom='git merge origin/master'
+alias gnew="git log HEAD@{1}..HEAD@{0}"
+alias gp='git pull'
+alias gpr='git pull --rebase'
+alias gpu='git push origin master:refs/for/master'
+alias gr='git rebase'
+alias gs='git status'
+alias gss='git status --short'
+alias gst='git stash'
+alias gsta='git stash apply'
+alias gstd='git stash drop'
+alias gstl='git stash list'
+alias gstp='git stash pop'
+alias gsts='git stash save'
