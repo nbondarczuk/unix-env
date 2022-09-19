@@ -6,6 +6,7 @@ alias f=find
 alias v=vim
 alias e=emacs
 alias w=who
+alias m=make
 alias p='ps -Af | grep $1'
 
 alias hh='history | grep $1'
