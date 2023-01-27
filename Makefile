@@ -4,8 +4,9 @@ help:
 	@echo '    make load     Loads the modified .bashrc* files to $PWD'
 
 install:
-	cp ./.bashrc* .emacs ${HOME}
-
-load:
-	cp -f ${HOME}/.bashrc* ${HOME}/.emacs .
+	cp -f ~/.bashrc* ~/.bash_profile ${HOME}
+	cp -f ~/.emacs ${HOME}
+save:
+	cp -f ~/.bashrc* ~/.bash_profile .
+	cp -f ~/.emacs .
 
