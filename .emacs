@@ -3,44 +3,34 @@
 ;;
 
 ;;(require 'git)
- 
+
 ;;
 ;; general setup
 ;;
 
-;; Added by Package.el.  This must come before configurations of
-;; installed packages.  Don't delete this line.  If you don't want it,
-;; just comment it out by adding a semicolon to the start of the line.
-;; You may delete these explanatory comments.
-(package-initialize)
-
 (setq-default tab-width 4)
-;(setq-default indent-tabs-mode t)
-(setq-default tab-always-indent t)
+(setq-default tab-always-indent nil)
 (setq-default c-basic-offset 4)
 (setq-default truncate-lines t)
-(setq tab-width 4)
-(electric-indent-local-mode 1)
-(electric-indent-mode 1)
-;(global-linum-mode 1)
+(setq-default show-trailing-whitespace t)
+(setq-default indent-tabs-mode nil)
+
+(electric-indent-local-mode nil)
+(electric-indent-mode nil)
 (column-number-mode 1)
 (display-time-mode)
-
-(defun indent-buffer ()
-     (interactive)
-     (save-excursion
-       (indent-region (point-min) (point-max) nil)))
 
 ;;
 ;; Fx keys
 ;;
 (global-set-key (kbd "<f12>") 'whitespace-cleanup)
 (global-set-key (kbd "<f9>") 'whitespace-mode)
-(global-set-key (kbd "<f9>") 'indent-buffer)
+(global-set-key (kbd "<f8>") 'indent-buffer)
 (global-set-key (kbd "<f7>") 'eval-buffer)
 (global-set-key (kbd "<f6>") 'isearch-forward)
 (global-set-key (kbd "<f5>") 'new-frame)
-(global-set-key (kbd "<f2>") 'toggle-truncate-lines)
+(global-set-key (kbd "<f4>") 'goto-line)
+(global-set-key (kbd "<f3>") 'toggle-truncate-lines)
 
 ;;
 ;; emacs window 120x60@50x50
@@ -76,11 +66,11 @@
 (add-to-list 'auto-mode-alist '("\\.inc\\'" . xml-mode))
 (add-to-list 'auto-mode-alist '("\\.xslt\\'" . xml-mode))
 
-(c-add-style "nb-style"
+(c-add-style "my-style"
 			 '("linux"
-			   (indent-tabs-mode . nil)        ; use spaces rather than tabs
-			   (c-indent-level 4)              ; TAB is 4 spaces
-			   (c-basic-offset . 4)            ; indent by four spaces
+			   (indent-tabs-mode . nil)      ; use spaces rather than tabs
+			   (c-indent-level 4)            ; TAB is 4 spaces
+			   (c-basic-offset . 4)          ; indent by four spaces
 			   (c-offsets-alist . ((inline-open . 0)  ; custom indentation rules
 								   (brace-list-open . 0)
 								   (statement-case-open . +)))))
@@ -91,7 +81,6 @@
   (c-toggle-auto-hungry-state 1))
 
 (add-hook 'c++-mode-hook 'my-c++-mode-hook)
-
 
 ;;
 ;; custom autosave part
@@ -114,12 +103,17 @@
 
 ;;; MELPA
 
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
 (require 'package)
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.org/packages/") t)
 
 ;;; GOLANG
-(add-to-list 'load-path "~/go/go-mode.el")
+;(add-to-list 'load-path "~/go/go-mode.el")
 (autoload 'go-mode "go-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
 

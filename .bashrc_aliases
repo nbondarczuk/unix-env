@@ -8,6 +8,7 @@ alias e=emacs
 alias w=who
 alias m=make
 alias p='ps -Af | grep $1'
+alias d=docker
 
 alias hh='history | grep $1'
 alias da='date "+%A, %B %d, %Y [%T]"'
@@ -25,6 +26,7 @@ alias ll='ls -al'
 alias lx='ll -BX'        # sort by extension
 alias lz='ll -rS'        # sort by size
 alias lt='ll -rt'        # sort by date
+alias lsn='ls --full-time "$@"'
 
 
 #
