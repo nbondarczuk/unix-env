@@ -178,7 +178,16 @@
 
 ;;; XML
 
+(add-to-list 'auto-mode-alist '("\\.xml\\'" . xml-mode))
 (add-to-list 'auto-mode-alist '("\\.cfg\\'" . xml-mode))
 (add-to-list 'auto-mode-alist '("\\.tmpl\\'" . xml-mode))
 (add-to-list 'auto-mode-alist '("\\.inc\\'" . xml-mode))
 (add-to-list 'auto-mode-alist '("\\.xslt\\'" . xml-mode))
+
+;;; YAML
+
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yml\\'" . yaml-mode))
+(add-hook 'yaml-mode-hook
+          '(lambda ()
+             (define-key yaml-mode-map "\C-m" 'newline-and-indent)))

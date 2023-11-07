@@ -10,3 +10,4 @@ save:
 	cp -f ~/.bashrc* ~/.bash_profile .
 	cp -f ~/.emacs .
 
+.PHONY: help install save 
