@@ -1,8 +1,4 @@
-;;
-;; misc pakages
-;;
-
-;;(require 'git)
+(require 'git)
 
 ;;
 ;; general setup

@@ -4,10 +4,9 @@ help:
 	@echo '    make save - Loads the modified .bashrc* files to $PWD'
 
 install:
-	cp -f ./.bashrc* ./.bash_profile ${HOME}
-	cp -f ./.emacs ${HOME}
+	cp -f ./.bashrc* ./.bash_profile ./.emacs ./.tmix.conf ${HOME}
+
 save:
-	cp -f ~/.bashrc* ~/.bash_profile .
-	cp -f ~/.emacs .
+	cp -f ~/.bashrc* ~/.bash_profile ~/.emacs .
 
 .PHONY: help install save 
