@@ -1,4 +1,13 @@
-(require 'git)
+;(require 'git)
+;; ____________________________________________________________________________
+;; Aquamacs custom-file warning:
+;; Warning: After loading this .emacs file, Aquamacs will also load
+;; customizations from `custom-file' (customizations.el). Any settings there
+;; will override those made here.
+;; Consider moving your startup settings to the Preferences.el file, which
+;; is loaded after `custom-file':
+;; ~/Library/Preferences/Aquamacs Emacs/Preferences
+;; _____________________________________________________________________________
 
 ;;
 ;; general setup
@@ -38,14 +47,14 @@
 	  (setq initial-frame-alist
 			'(
 			  (tool-bar-lines . 0)
-			  (width . 120)
+			  (width . 160)
 			  (height . 60)
 			  (left . 0)
 			  (top . 0)))
 	  (setq default-frame-alist
 			'(
 			  (tool-bar-lines . 0)
-			  (width . 120)
+			  (width . 160)
 			  (height . 60)
 			  (left . 0)
 			  (top . 0))))
@@ -70,7 +79,7 @@
  '(display-time-mode t)
  '(ispell-dictionary nil)
  '(package-selected-packages
-   '(go-direx company-go gotest flymake-go flycheck-golangci-lint flycheck go-projectile yaml-pro go-eldoc golint go-mode ## gotham-theme json-navigator json-mode jsonrpc yaml-mode pyfmt py-yapf night-owl-theme gitconfig gited git symon srcery-theme python python-info python-mode pylint elpy dracula-theme magit))
+   '(dart-mode go-direx company-go gotest flymake-go flycheck-golangci-lint flycheck go-projectile yaml-pro go-eldoc golint go-mode ## gotham-theme json-navigator json-mode jsonrpc yaml-mode pyfmt py-yapf night-owl-theme gitconfig gited git symon srcery-theme python python-info python-mode pylint elpy dracula-theme magit))
  '(show-paren-mode t))
 
 ;;; MELPA
@@ -112,7 +121,7 @@
 (setq exec-path (append '("/usr/local/go/bin") exec-path))
 (setenv "PATH" (concat "/usr/local/go/bin:" (getenv "PATH")))
 
-(add-hook 'after-init-hook #'global-flycheck-mode)
+;(add-hook 'after-init-hook #'global-flycheck-mode)
 
 (defun my-go-mode-hook ()
   (setq tab-width 4 indent-tabs-mode 1)
@@ -130,18 +139,18 @@
 (add-hook 'go-mode-hook 'my-go-mode-hook)
 
 ; Use projectile-test-project in place of 'compile'; assign whatever key you want.
-(global-set-key [f11] 'projectile-test-project)
+;(global-set-key [f11] 'projectile-test-project)
 
 ; "projectile" recognizes git repos (etc) as "projects" and changes settings
 ; as you switch between them.
-(projectile-global-mode 1)
-(require 'go-projectile)
-(go-projectile-tools-add-path)
+;(projectile-global-mode 1)
+;(require 'go-projectile)
+;(go-projectile-tools-add-path)
 (setq gofmt-command "/usr/local/go/bin/goimports")
 
 ; "company" is auto-completion
 (require 'company)
-(require 'go-mode)
+;(require 'go-mode)
 (require 'company-go)
 (add-hook 'go-mode-hook (lambda ()
                           (company-mode)
@@ -182,11 +191,27 @@
           '(lambda ()
              (define-key yaml-mode-map "\C-m" 'newline-and-indent)))
 
+;;; DART
+
+
+(require 'dart-mode)
+(add-to-list 'auto-mode-alist '("\\.dart\\'" . dart-mode))
+
 ;;; Ubuntu Miono font for Emacs
 
+;(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ ;'(default ((t (:family "Ubuntu Mono" :slant normal :weight normal :height 98 :width normal)))))
+
+(osx-clipboard-mode +1)
+
+;(osx-lib-say "emacs ready!!!")
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Ubuntu Mono" :slant normal :weight normal :height 98 :width normal)))))
+ )
