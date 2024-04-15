@@ -79,7 +79,7 @@
  '(display-time-mode t)
  '(ispell-dictionary nil)
  '(package-selected-packages
-   '(dart-mode go-direx company-go gotest flymake-go flycheck-golangci-lint flycheck go-projectile yaml-pro go-eldoc golint go-mode ## gotham-theme json-navigator json-mode jsonrpc yaml-mode pyfmt py-yapf night-owl-theme gitconfig gited git symon srcery-theme python python-info python-mode pylint elpy dracula-theme magit))
+   '(dockerfile-mode dart-mode go-direx company-go gotest flymake-go flycheck-golangci-lint flycheck go-projectile yaml-pro go-eldoc golint go-mode ## gotham-theme json-navigator json-mode jsonrpc yaml-mode pyfmt py-yapf night-owl-theme gitconfig gited git symon srcery-theme python python-info python-mode pylint elpy dracula-theme magit))
  '(show-paren-mode t))
 
 ;;; MELPA
