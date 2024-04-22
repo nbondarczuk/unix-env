@@ -8,8 +8,9 @@ and I creaed a setup files to be distributed all over the machines/instances.
 
 ## Usage
 
-Make is ised to:
-- **install** the environment
-- **save** the existing setup with modifications.
+Make is used to:
+- **help**    is given
+- **install** the environment with provides config files
+- **save**    the existing local setup to VCS (first this dir)
 
 This is how the make file targets are organized.
