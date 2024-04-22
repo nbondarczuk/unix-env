@@ -3,19 +3,19 @@
 #
 alias h=history
 alias f=find
-alias v=vim
+alias v=nvim
 alias e=emacs
-alias w=who
+alias w=watch
 alias m=make
 alias p='ps -Af | grep $1'
 alias d=docker
-alias k=kubectl
 
+alias vi=nvim
+alias mk=minikube
 alias hh='history | grep $1'
 alias da='date "+%A, %B %d, %Y [%T]"'
 alias du1='du --max-depth=1'
 alias openports='netstat --all --numeric --programs --inet --inet6'
-alias mk='minikube kubectl'
 
 #
 # ls aliases
