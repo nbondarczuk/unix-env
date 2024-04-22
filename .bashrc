@@ -26,3 +26,6 @@ if [ -f ~/.bashrc_oracle ]; then
     . ~/.bashrc_oracle
 fi
 
+if [ -f .iterm2_shell_integration.bash ]; then
+    . ~/.iterm2_shell_integration.bash
+fi
