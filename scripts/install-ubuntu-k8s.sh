@@ -24,3 +24,14 @@ sudo install minikube-linux-amd64 /usr/local/bin/minikube
 # 4. Install kubectl:
 
 curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+
+# 5. Ingress and others
+
+minikube addons enable dashboard
+minikube addons enable ingress
+
+# 6. Test it
+
+kubectl create deployment nginx-web --image=nginx
+kubectl expose deployment nginx-web --type NodePort --port=80
+kubectl get deployment,pod,svc
