@@ -39,6 +39,12 @@
 (global-set-key (kbd "<f3>") 'toggle-truncate-lines)
 
 ;;
+;; Magic keys
+;;
+(global-set-key (kbd "C-c c") 'compile)
+(global-set-key (kbd "C-c s") 'go-scratch)
+
+;;
 ;; emacs window 120x60@50x50
 ;;
 
@@ -75,11 +81,13 @@
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(column-number-mode t)
  '(custom-enabled-themes '(tsdh-dark))
+ '(custom-safe-themes
+   '("c92a0fece9ad256d83a0ce85df1f15e1c9280eba91c0cc06f8879b9572a855c7" "e28246005845509308f992e6fa8524249e13b65192572c9cc9f412a4c5150373" default))
  '(delete-selection-mode nil)
  '(display-time-mode t)
  '(ispell-dictionary nil)
  '(package-selected-packages
-   '(dockerfile-mode dart-mode go-direx company-go gotest flymake-go flycheck-golangci-lint flycheck go-projectile yaml-pro go-eldoc golint go-mode ## gotham-theme json-navigator json-mode jsonrpc yaml-mode pyfmt py-yapf night-owl-theme gitconfig gited git symon srcery-theme python python-info python-mode pylint elpy dracula-theme magit))
+   '(oberon dockerfile-mode dart-mode go-direx company-go gotest flymake-go flycheck-golangci-lint flycheck go-projectile yaml-pro go-eldoc golint go-mode ## gotham-theme json-navigator json-mode jsonrpc yaml-mode pyfmt py-yapf night-owl-theme gitconfig gited git symon srcery-theme python python-info python-mode pylint elpy dracula-theme magit))
  '(show-paren-mode t))
 
 ;;; MELPA
@@ -127,7 +135,15 @@
   (setq tab-width 4 indent-tabs-mode 1)
   ; eldoc shows the signature of the function at point in the status bar.
   (go-eldoc-setup)
+  ; Customize compile command to run go build
+  (if (not (string-match "go" compile-command))
+      (set (make-local-variable 'compile-command)
+           "go build && go test -v ./... && go vet"))
+  (global-set-key (kbd "C-c c") #'compile)
+  ; goto definition and back
   (local-set-key (kbd "M-.") #'godef-jump)
+  (local-set-key (kbd "M-*") #'pop-tag-mark)
+  ; save formated file
   (add-hook 'before-save-hook 'gofmt-before-save)
   ; extra keybindings from https://github.com/bbatsov/prelude/blob/master/modules/prelude-go.el
   (let ((map go-mode-map))
@@ -137,6 +153,13 @@
     (define-key map (kbd "C-c b") 'go-run)))
 
 (add-hook 'go-mode-hook 'my-go-mode-hook)
+
+(require 'go-autocomplete)
+(require 'auto-complete-config)
+(define-key ac-mode-map (kbd "M-TAB") 'auto-complete)
+(defun auto-complete-for-go ()
+(auto-complete-mode 1))
+(add-hook 'go-mode-hook 'auto-complete-for-go)
 
 ; Use projectile-test-project in place of 'compile'; assign whatever key you want.
 ;(global-set-key [f11] 'projectile-test-project)
@@ -149,12 +172,12 @@
 (setq gofmt-command "/usr/local/go/bin/goimports")
 
 ; "company" is auto-completion
-(require 'company)
+;(require 'company)
 ;(require 'go-mode)
-(require 'company-go)
-(add-hook 'go-mode-hook (lambda ()
-                          (company-mode)
-                          (set (make-local-variable 'company-backends) '(company-go))))
+;(require 'company-go)
+;(add-hook 'go-mode-hook (lambda ()
+;                          (company-mode)
+;                          (set (make-local-variable 'company-backends) '(company-go))))
 
 ; gotest defines a better set of error regexps for go tests, but it only
 ; enables them when using its own functions. Add them globally for use in
@@ -193,11 +216,15 @@
 
 ;;; DART
 
-
 (require 'dart-mode)
 (add-to-list 'auto-mode-alist '("\\.dart\\'" . dart-mode))
 
-;;; Ubuntu Miono font for Emacs
+;; Oberon
+
+(require 'oberon)
+(add-to-list 'auto-mode-alist '("\\.obn\\'" . oberon-mode))
+
+;;; Ubuntu Mono font for Emacs
 
 ;(custom-set-faces
  ;; custom-set-faces was added by Custom.

@@ -22,10 +22,12 @@ if [ -f ~/.bashrc_hosts ]; then
     . ~/.bashrc_hosts
 fi
 
-if [ -f ~/.bashrc_oracle ]; then
-    . ~/.bashrc_oracle
+if [ -f ~/.bashrc_oracle_${UNAME}_client ]; then
+    . ~/.bashrc_oracle_${UNAME}_client
 fi
 
 if [ -f .iterm2_shell_integration.bash ]; then
     . ~/.iterm2_shell_integration.bash
 fi
+
+eval "$(direnv hook bash)"

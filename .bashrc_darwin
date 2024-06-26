@@ -4,7 +4,6 @@ export CLICOLOR=1
 export TERM="xterm-color" 
 export PS1='\[\e[0;33m\]\u\[\e[0m\]@\[\e[0;32m\]\h\[\e[0m\]:\[\e[0;34m\]\w\[\e[0m\]\$ '
 export LSCOLORS=GxFxCxDxBxegedabagaced
-export PATH=/usr/local/bin:/opt/homebrew/bin:$PATH
 
 # add Postgres 15 on Mac OS X
 export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
@@ -16,3 +15,5 @@ export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 alias cat=bat
 alias c=bat
 
+# homebrew & local
+export PATH="/usr/local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"

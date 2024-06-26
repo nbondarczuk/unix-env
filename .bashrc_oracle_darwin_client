@@ -1,0 +1,4 @@
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-22.jdk/Contents/Home
+export PATH=$JAVA_HOME/bin:$HOME/ora/sqlcl/bin:$PATH
+export TNS_ADMIN=$HOME/ora
+alias sys='sql SYS/$DB_SYS_PASSWORD@FREE AS SYSDBA'
